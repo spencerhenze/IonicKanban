@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { NavController } from 'ionic-angular';
 
 @Component({
@@ -10,12 +11,25 @@ export class HomePage {
   newBoard = {
     name: ''
   };
-  
-  constructor(public navCtrl: NavController) {
+
+  newBoardForm = this.fb.group({
+    'name': ['', Validators.compose([Validators.required, Validators.minLength(2)])]
+  })
+
+  constructor(public navCtrl: NavController, public fb: FormBuilder) {
 
   }
 
-  createNewBoard() {
-    console.log("create board")
+
+  createNewBoard(event) {
+    if(this.newBoardForm.valid) {
+      console.log(this.newBoardForm.value)
+      console.log("create board")
+    }
+    else {
+      console.log("you suck")
+    }
   }
 }
+
+

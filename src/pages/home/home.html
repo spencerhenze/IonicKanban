@@ -15,9 +15,10 @@
       <ion-card-title>Create New Board</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <form *ngIf="creatingBoard" (ngSubmit)="createNewBoard()" text-center>
+      <form [formGroup]="newBoardForm" *ngIf="creatingBoard" (ngSubmit)="createNewBoard($event)" text-center>
         <ion-item>
-          <ion-input type="text" name="createNewBoard" text-center placeholder="enter board name" [(ngModel)]="newBoard.name"></ion-input>
+          <ion-input formControlName="name" type="text" placeholder="Board Name"></ion-input>
+          <!-- <ion-input type="text" name="createNewBoard" text-center placeholder="enter board name" [(ngModel)]="newBoard.name"></ion-input> -->
         </ion-item>
         <button ion-button type="submit">Create Board</button>
       </form>
