@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card (click)="creatingBoard = true" text-center padding>
+    <p>Create new board</p>
+  </ion-card>
+  <ion-card *ngIf="creatingBoard" text-center>
+    <ion-card-header>
+      <ion-card-title>Create New Board</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form *ngIf="creatingBoard" (ngSubmit)="createNewBoard()" text-center>
+        <ion-item>
+          <ion-input type="text" name="createNewBoard" text-center placeholder="enter board name" [(ngModel)]="newBoard.name"></ion-input>
+        </ion-item>
+        <button ion-button type="submit">Create Board</button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
